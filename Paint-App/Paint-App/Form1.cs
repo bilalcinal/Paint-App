@@ -24,7 +24,7 @@ namespace Paint_App
         int index;
         int x, y, sX, sY, cX, cY;
 
-      
+       
 
         private void pic_MouseMove(object sender, MouseEventArgs e)
         {
@@ -52,6 +52,9 @@ namespace Paint_App
             sY = e.Y - cY;
 
         }
+
+       
+
         private void pic_MouseDown(object sender, MouseEventArgs e)
         {
             paint = true;
@@ -71,6 +74,14 @@ namespace Paint_App
             {
                 g.DrawEllipse(p, cX, cY, sX, sY);
             }
+            if (index==4)
+            {
+                g.DrawRectangle(p, cX, cY, sX, sY);
+            }
+            if (index==5)
+            {
+                g.DrawLine(p,cX,cY,x,y);
+            }
 
         }
 
@@ -89,7 +100,13 @@ namespace Paint_App
             index = 3;
         }
 
-
-
+        private void btn_kare_Click(object sender, EventArgs e)
+        {
+            index = 4;
+        }
+        private void btn_çizgi_Click(object sender, EventArgs e)
+        {
+            index = 5;
+        }
     }
 }

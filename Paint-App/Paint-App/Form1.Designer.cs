@@ -87,6 +87,7 @@
             this.btn_çizgi.Text = "Çizgi";
             this.btn_çizgi.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_çizgi.UseVisualStyleBackColor = true;
+            this.btn_çizgi.Click += new System.EventHandler(this.btn_çizgi_Click);
             // 
             // btn_kare
             // 
@@ -103,6 +104,7 @@
             this.btn_kare.Text = "Kare";
             this.btn_kare.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_kare.UseVisualStyleBackColor = true;
+            this.btn_kare.Click += new System.EventHandler(this.btn_kare_Click);
             // 
             // btn_elips
             // 
