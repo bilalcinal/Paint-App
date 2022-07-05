@@ -20,6 +20,7 @@ namespace Paint_App
         bool paint = false;
         Point px, py;
         Pen p =new Pen(Color.Black,1);
+        Pen erase = new Pen(Color.White, 40);
         int index;
 
         private void pic_MouseMove(object sender, MouseEventArgs e)
@@ -30,6 +31,12 @@ namespace Paint_App
                 {
                     px = e.Location;
                     g.DrawLine(p, px, py);
+                    py = px;
+                }
+                if (index == 2)
+                {
+                    px = e.Location;
+                    g.DrawLine(erase, px, py);
                     py = px;
                 }
             }
@@ -47,6 +54,11 @@ namespace Paint_App
         private void btn_kalem_Click(object sender, EventArgs e)
         {
             index = 1;
+        }
+
+        private void btn_silgi_Click(object sender, EventArgs e)
+        {
+            index = 2;
         }
 
         private void pic_MouseDown(object sender, MouseEventArgs e)

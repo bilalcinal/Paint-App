@@ -135,6 +135,7 @@
             this.btn_silgi.Text = "Silgi";
             this.btn_silgi.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_silgi.UseVisualStyleBackColor = true;
+            this.btn_silgi.Click += new System.EventHandler(this.btn_silgi_Click);
             // 
             // btn_kalem
             // 
