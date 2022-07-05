@@ -64,6 +64,8 @@ namespace Paint_App
 
         }
 
+      
+
         private void pic_MouseUp(object sender, MouseEventArgs e)
         {
             paint = false;
@@ -107,6 +109,26 @@ namespace Paint_App
         private void btn_çizgi_Click(object sender, EventArgs e)
         {
             index = 5;
+        }
+        private void pic_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            if (paint)
+            {
+
+                if (index == 3)
+                {
+                    g.DrawEllipse(p, cX, cY, sX, sY);
+                }
+                if (index == 4)
+                {
+                    g.DrawRectangle(p, cX, cY, sX, sY);
+                }
+                if (index == 5)
+                {
+                    g.DrawLine(p, cX, cY, x, y);
+                }
+            }
         }
     }
 }
