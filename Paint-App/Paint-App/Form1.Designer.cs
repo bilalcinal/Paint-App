@@ -70,6 +70,7 @@
             // 
             // btn_yükle
             // 
+            this.btn_yükle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_yükle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btn_yükle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btn_yükle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -77,13 +78,14 @@
             this.btn_yükle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_yükle.Location = new System.Drawing.Point(3, 580);
             this.btn_yükle.Name = "btn_yükle";
-            this.btn_yükle.Size = new System.Drawing.Size(86, 66);
+            this.btn_yükle.Size = new System.Drawing.Size(86, 57);
             this.btn_yükle.TabIndex = 12;
             this.btn_yükle.Text = "Yükle";
             this.btn_yükle.UseVisualStyleBackColor = true;
             // 
             // btn_temizle
             // 
+            this.btn_temizle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_temizle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btn_temizle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btn_temizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -91,7 +93,7 @@
             this.btn_temizle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_temizle.Location = new System.Drawing.Point(4, 519);
             this.btn_temizle.Name = "btn_temizle";
-            this.btn_temizle.Size = new System.Drawing.Size(183, 55);
+            this.btn_temizle.Size = new System.Drawing.Size(180, 55);
             this.btn_temizle.TabIndex = 11;
             this.btn_temizle.Text = "Temizle";
             this.btn_temizle.UseVisualStyleBackColor = true;
@@ -99,6 +101,7 @@
             // 
             // btn_kaydet
             // 
+            this.btn_kaydet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_kaydet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btn_kaydet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btn_kaydet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -106,7 +109,7 @@
             this.btn_kaydet.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_kaydet.Location = new System.Drawing.Point(95, 580);
             this.btn_kaydet.Name = "btn_kaydet";
-            this.btn_kaydet.Size = new System.Drawing.Size(92, 66);
+            this.btn_kaydet.Size = new System.Drawing.Size(89, 57);
             this.btn_kaydet.TabIndex = 10;
             this.btn_kaydet.Text = "Kaydet";
             this.btn_kaydet.UseVisualStyleBackColor = true;
@@ -121,6 +124,7 @@
             this.renk_paleti.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.renk_paleti.TabIndex = 8;
             this.renk_paleti.TabStop = false;
+            this.renk_paleti.MouseClick += new System.Windows.Forms.MouseEventHandler(this.renk_paleti_MouseClick);
             // 
             // btn_çizgi
             // 

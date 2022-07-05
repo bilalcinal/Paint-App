@@ -110,6 +110,8 @@ namespace Paint_App
             index = 1;
         }
 
+       
+
         private void btn_silgi_Click(object sender, EventArgs e)
         {
             index = 2;
@@ -148,5 +150,20 @@ namespace Paint_App
                 }
             }
         }
+        static Point set_point(PictureBox pb, Point pt)
+        {
+            float pX = 1f * pb.Image.Width / pb.Width;
+            float pY = 1f * pb.Image.Height / pb.Height;
+            return new Point((int)(pt.X*pX),(int)(pt.Y*pY));
+        }
+
+        private void renk_paleti_MouseClick(object sender, MouseEventArgs e)
+        {
+            Point point = set_point(renk_paleti, e.Location);
+            pic_renk.BackColor = ((Bitmap)renk_paleti.Image).GetPixel(point.X, point.Y);
+            new_color = pic_renk.BackColor;
+            p.Color = pic_renk.BackColor;
+        }
+
     }
 }
