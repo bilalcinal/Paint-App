@@ -204,7 +204,7 @@ namespace Paint_App
 
         private void pic_MouseClick(object sender, MouseEventArgs e)
         {
-            if (index==7)
+            if (index==6)
             {
                 Point point = set_point(pic, e.Location);
                 Doldur(bm, point.X, point.Y, new_color);
@@ -213,7 +213,7 @@ namespace Paint_App
         }
         private void btn_doldur_Click(object sender, EventArgs e)
         {
-            index = 7;
+            index = 6;
         }
 
     }
