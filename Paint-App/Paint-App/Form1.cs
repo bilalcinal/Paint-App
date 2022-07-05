@@ -24,6 +24,9 @@ namespace Paint_App
         int index;
         int x, y, sX, sY, cX, cY;
 
+        ColorDialog cd = new ColorDialog();
+        Color new_color;
+
        
 
         private void pic_MouseMove(object sender, MouseEventArgs e)
@@ -84,7 +87,22 @@ namespace Paint_App
             {
                 g.DrawLine(p,cX,cY,x,y);
             }
+         
+        }
 
+        private void btn_temizle_Click(object sender, EventArgs e)
+        {
+            g.Clear(Color.White);
+            pic.Image = bm;
+            index = 0;
+        }
+
+        private void btn_renk_Click(object sender, EventArgs e)
+        {
+            cd.ShowDialog();
+            new_color = cd.Color;
+            pic_renk.BackColor = cd.Color;
+            p.Color = cd.Color;
         }
 
         private void btn_kalem_Click(object sender, EventArgs e)
