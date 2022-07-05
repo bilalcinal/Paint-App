@@ -232,6 +232,7 @@
             this.btn_doldur.Text = "Doldur";
             this.btn_doldur.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_doldur.UseVisualStyleBackColor = true;
+            this.btn_doldur.Click += new System.EventHandler(this.btn_doldur_Click);
             // 
             // btn_renk
             // 
@@ -271,6 +272,7 @@
             this.pic.TabIndex = 1;
             this.pic.TabStop = false;
             this.pic.Paint += new System.Windows.Forms.PaintEventHandler(this.pic_Paint);
+            this.pic.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pic_MouseClick);
             this.pic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pic_MouseDown);
             this.pic.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pic_MouseMove);
             this.pic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pic_MouseUp);

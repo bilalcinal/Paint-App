@@ -126,10 +126,16 @@ namespace Paint_App
         {
             index = 4;
         }
+
+       
+
         private void btn_çizgi_Click(object sender, EventArgs e)
         {
             index = 5;
         }
+
+       
+
         private void pic_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -163,6 +169,51 @@ namespace Paint_App
             pic_renk.BackColor = ((Bitmap)renk_paleti.Image).GetPixel(point.X, point.Y);
             new_color = pic_renk.BackColor;
             p.Color = pic_renk.BackColor;
+        }
+
+        public void Doldur(Bitmap bm , int x, int y, Color new_rnk)
+        {
+            Color old_color = bm.GetPixel(x, y);
+            Stack<Point> pixel = new Stack<Point>();
+            pixel.Push(new Point(x, y));
+            bm.SetPixel(x, y, new_rnk);
+            if (old_color == new_rnk) return;
+
+            while(pixel.Count > 0)
+            {
+                Point pt = (Point)pixel.Pop();
+                if (pt.X>0 && pt.Y>0 && pt.X<bm.Width-1 && pt.Y<bm.Height-1)
+                {
+                    validate(bm, pixel, pt.X - 1, pt.Y, old_color, new_rnk);
+                    validate(bm, pixel, pt.X , pt.Y - 1, old_color, new_rnk);
+                    validate(bm, pixel, pt.X + 1, pt.Y, old_color, new_rnk);
+                    validate(bm, pixel, pt.X , pt.Y + 1, old_color, new_rnk);
+                }
+            }
+        }
+        private void validate(Bitmap bm,Stack<Point>sp,int x,int y,Color old_color,Color new_color)
+        {
+            Color cx = bm.GetPixel(x, y);
+            if (cx==old_color)
+            {
+                sp.Push(new Point(x,y));
+                bm.SetPixel(x, y, new_color);
+
+            }
+        }
+
+        private void pic_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (index==7)
+            {
+                Point point = set_point(pic, e.Location);
+                Doldur(bm, point.X, point.Y, new_color);
+
+            }
+        }
+        private void btn_doldur_Click(object sender, EventArgs e)
+        {
+            index = 7;
         }
 
     }
