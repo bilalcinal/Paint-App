@@ -22,6 +22,9 @@ namespace Paint_App
         Pen p =new Pen(Color.Black,1);
         Pen erase = new Pen(Color.White, 40);
         int index;
+        int x, y, sX, sY, cX, cY;
+
+      
 
         private void pic_MouseMove(object sender, MouseEventArgs e)
         {
@@ -43,11 +46,31 @@ namespace Paint_App
 
             pic.Refresh();
 
+            x = e.X;
+            y = e.Y;
+            sX = e.X - cX;
+            sY = e.Y - cY;
+
+        }
+        private void pic_MouseDown(object sender, MouseEventArgs e)
+        {
+            paint = true;
+            py = e.Location;
+            cX = e.X;
+            cY = e.Y;
+
         }
 
         private void pic_MouseUp(object sender, MouseEventArgs e)
         {
             paint = false;
+            sX = x - cX;
+            sY = y - cY;
+
+            if (index==3)
+            {
+                g.DrawEllipse(p, cX, cY, sX, sY);
+            }
 
         }
 
@@ -60,14 +83,13 @@ namespace Paint_App
         {
             index = 2;
         }
-
-        private void pic_MouseDown(object sender, MouseEventArgs e)
+        
+        private void btn_elips_Click(object sender, EventArgs e)
         {
-            paint = true;
-            py = e.Location;
-
+            index = 3;
         }
 
-        
+
+
     }
 }

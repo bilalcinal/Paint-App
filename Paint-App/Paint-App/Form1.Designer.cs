@@ -119,6 +119,7 @@
             this.btn_elips.Text = "Elips";
             this.btn_elips.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_elips.UseVisualStyleBackColor = true;
+            this.btn_elips.Click += new System.EventHandler(this.btn_elips_Click);
             // 
             // btn_silgi
             // 
