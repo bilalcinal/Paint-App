@@ -1,3 +1,5 @@
+using System.Drawing.Imaging;
+
 namespace Paint_App
 {
     public partial class Form1 : Form
@@ -134,7 +136,22 @@ namespace Paint_App
             index = 5;
         }
 
-       
+        private void btn_yükle_Click(object sender, EventArgs e)
+        {
+            var bitmap = new Bitmap(@"C:\Users\hbila\OneDrive\Masaüstü\txt.bmp");
+            g = Graphics.FromImage(bitmap);
+            pic.Image = bitmap;
+
+
+        }
+
+        private void btn_kaydet_Click(object sender, EventArgs e)
+        {
+            string fileName = @"C:\Users\hbila\OneDrive\Masaüstü\txt.bmp";
+            Bitmap bmp = new Bitmap(pic.ClientSize.Width, pic.ClientSize.Width);
+            pic.DrawToBitmap(bmp, pic.ClientRectangle);
+            bmp.Save(fileName, ImageFormat.Bmp);
+        }
 
         private void pic_Paint(object sender, PaintEventArgs e)
         {
@@ -156,6 +173,8 @@ namespace Paint_App
                 }
             }
         }
+
+        
         static Point set_point(PictureBox pb, Point pt)
         {
             float pX = 1f * pb.Image.Width / pb.Width;
@@ -163,13 +182,7 @@ namespace Paint_App
             return new Point((int)(pt.X*pX),(int)(pt.Y*pY));
         }
 
-        private void renk_paleti_MouseClick(object sender, MouseEventArgs e)
-        {
-            Point point = set_point(renk_paleti, e.Location);
-            pic_renk.BackColor = ((Bitmap)renk_paleti.Image).GetPixel(point.X, point.Y);
-            new_color = pic_renk.BackColor;
-            p.Color = pic_renk.BackColor;
-        }
+       
 
         public void Doldur(Bitmap bm , int x, int y, Color new_rnk)
         {
@@ -215,6 +228,9 @@ namespace Paint_App
         {
             index = 6;
         }
+
+       
+
 
     }
 }
