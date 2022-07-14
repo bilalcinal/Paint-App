@@ -2,6 +2,7 @@ using System.Drawing.Imaging;
 
 namespace Paint_App
 {
+   
     public partial class Form1 : Form
     {
         public Form1()
@@ -10,51 +11,40 @@ namespace Paint_App
 
             this.Width = 900;
             this.Height = 700;
-            bm = new Bitmap(pic.Width, pic.Height);
-            g = Graphics.FromImage(bm);
-            g.Clear(Color.White);
-            pic.Image = bm;
+            paint.Bitmap = new Bitmap(pic.Width, pic.Height);
+            paint.Graphics = Graphics.FromImage(paint.Bitmap);
+            paint.Graphics.Clear(Color.White);
+            pic.Image = paint.Bitmap;
 
         }
 
-        Bitmap bm;
-        Graphics g;
-        bool paint = false;
-        Point px, py;
-        Pen p = new Pen(Color.Black, 1);
-        Pen erase = new Pen(Color.White, 40);
-        int index;
-        int x, y, sX, sY, cX, cY;
 
-        ColorDialog cd = new ColorDialog();
-        Color new_color;
-
-
+        Paint paint = new Paint();
 
         private void pic_MouseMove(object sender, MouseEventArgs e)
         {
-            if (paint)
+            if (paint.IsPaint)
             {
-                if (index == 1)
+                if (paint.Index == 1)
                 {
-                    px = e.Location;
-                    g.DrawLine(p, px, py);
-                    py = px;
+                    paint.PointX = e.Location;
+                    paint.Graphics.DrawLine(paint.Pen, paint.PointX, paint.PointY);
+                    paint.PointY = paint.PointX;
                 }
-                if (index == 2)
+                if (paint.Index == 2)
                 {
-                    px = e.Location;
-                    g.DrawLine(erase, px, py);
-                    py = px;
+                    paint.PointX = e.Location;
+                    paint.Graphics.DrawLine(paint.Eraser, paint.PointX, paint.PointY);
+                    paint.PointY = paint.PointX;
                 }
             }
 
             pic.Refresh();
 
-            x = e.X;
-            y = e.Y;
-            sX = e.X - cX;
-            sY = e.Y - cY;
+            paint.X = e.X;
+            paint.Y = e.Y;
+            paint.StartX = e.X - paint.CoordinateX;
+            paint.StartY = e.Y - paint.CoordinateY;
 
         }
 
@@ -62,10 +52,10 @@ namespace Paint_App
 
         private void pic_MouseDown(object sender, MouseEventArgs e)
         {
-            paint = true;
-            py = e.Location;
-            cX = e.X;
-            cY = e.Y;
+            paint.IsPaint = true;
+            paint.PointY = e.Location;
+            paint.CoordinateX = e.X;
+            paint.CoordinateY = e.Y;
 
         }
 
@@ -73,21 +63,21 @@ namespace Paint_App
 
         private void pic_MouseUp(object sender, MouseEventArgs e)
         {
-            paint = false;
-            sX = x - cX;
-            sY = y - cY;
+            paint.IsPaint = false;
+            paint.StartX = paint.X - paint.CoordinateX;
+            paint.StartY = paint.Y - paint.CoordinateY;
 
-            if (index == 3)
+            if (paint.Index == 3)
             {
-                g.DrawEllipse(p, cX, cY, sX, sY);
+                paint.Graphics.DrawEllipse(paint.Pen, paint.CoordinateX, paint.CoordinateY, paint.StartX, paint.StartY);
             }
-            if (index == 4)
+            if (paint.Index == 4)
             {
-                g.DrawRectangle(p, cX, cY, sX, sY);
+                paint.Graphics.DrawRectangle(paint.Pen, paint.CoordinateX, paint.CoordinateY, paint.StartX, paint.StartY);
             }
-            if (index == 5)
+            if (paint.Index == 5)
             {
-                g.DrawLine(p, cX, cY, x, y);
+                paint.Graphics.DrawLine(paint.Pen, paint.CoordinateX, paint.CoordinateY, paint.X, paint.Y);
             }
 
         }
@@ -96,11 +86,11 @@ namespace Paint_App
         {
             this.Width = 900;
             this.Height = 700;
-            bm = new Bitmap(pic.Width, pic.Height);
-            g = Graphics.FromImage(bm);
-            g.Clear(Color.White);
-            pic.Image = bm;
-            index = 0;
+            paint.Bitmap = new Bitmap(pic.Width, pic.Height);
+            paint.Graphics = Graphics.FromImage(paint.Bitmap);
+            paint.Graphics.Clear(Color.White);
+            pic.Image = paint.Bitmap;
+            paint.Index = 0;
         }
 
         private void btn_renk_Click(object sender, EventArgs e)
@@ -113,31 +103,31 @@ namespace Paint_App
 
         private void btn_kalem_Click(object sender, EventArgs e)
         {
-            index = 1;
+            paint.Index = 1;
         }
 
 
 
         private void btn_silgi_Click(object sender, EventArgs e)
         {
-            index = 2;
+            paint.Index = 2;
         }
 
         private void btn_elips_Click(object sender, EventArgs e)
         {
-            index = 3;
+            paint.Index = 3;
         }
 
         private void btn_kare_Click(object sender, EventArgs e)
         {
-            index = 4;
+            paint.Index = 4;
         }
 
 
 
         private void btn_çizgi_Click(object sender, EventArgs e)
         {
-            index = 5;
+            paint.Index = 5;
         }
 
         private void btn_yükle_Click(object sender, EventArgs e)
@@ -184,20 +174,20 @@ namespace Paint_App
         private void pic_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            if (paint)
+            if (paint.IsPaint)
             {
 
-                if (index == 3)
+                if (paint.Index == 3)
                 {
-                    g.DrawEllipse(p, cX, cY, sX, sY);
+                    g.DrawEllipse(paint.Pen, paint.CoordinateX, paint.CoordinateY, paint.StartX, paint.StartY);
                 }
-                if (index == 4)
+                if (paint.Index == 4)
                 {
-                    g.DrawRectangle(p, cX, cY, sX, sY);
+                    g.DrawRectangle(paint.Pen, paint.CoordinateX, paint.CoordinateY, paint.StartX, paint.StartY);
                 }
-                if (index == 5)
+                if (paint.Index == 5)
                 {
-                    g.DrawLine(p, cX, cY, x, y);
+                    g.DrawLine(paint.Pen, paint.CoordinateX, paint.CoordinateY, paint.X, paint.Y);
                 }
             }
         }
@@ -245,16 +235,16 @@ namespace Paint_App
 
         private void pic_MouseClick(object sender, MouseEventArgs e)
         {
-            if (index == 6)
+            if (paint.Index == 6)
             {
                 Point point = set_point(pic, e.Location);
-                Doldur(bm, point.X, point.Y, new_color);
+                Doldur(paint.Bitmap, point.X, point.Y, new_color);
 
             }
         }
         private void btn_doldur_Click(object sender, EventArgs e)
         {
-            index = 6;
+            paint.Index = 6;
         }
 
 
