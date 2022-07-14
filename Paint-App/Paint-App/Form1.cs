@@ -125,7 +125,7 @@ namespace Paint_App
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "Hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, " Temizlerken hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -172,7 +172,7 @@ namespace Paint_App
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "Hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Silerken hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -186,7 +186,7 @@ namespace Paint_App
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "Hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Elips çizerken hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -200,7 +200,7 @@ namespace Paint_App
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "Hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Kare çizerken hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -216,7 +216,7 @@ namespace Paint_App
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "Hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Çizgi çizerken hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -243,7 +243,7 @@ namespace Paint_App
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Yüklerken bir Hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Dosya yüklerken bir hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -252,8 +252,8 @@ namespace Paint_App
         {
             try
             {
-                Bitmap bmp = new Bitmap(pic.ClientSize.Width, pic.ClientSize.Width);
-                pic.DrawToBitmap(bmp, pic.ClientRectangle);
+                Bitmap bitmap = new Bitmap(pic.ClientSize.Width, pic.ClientSize.Width);
+                pic.DrawToBitmap(bitmap, pic.ClientRectangle);
                 SaveFileDialog sf = new SaveFileDialog();
                 sf.Filter = "Bitmap Image (.bmp)|.bmp|Gif Image (.gif)|.gif|JPEG Image (.jpeg)|.jpeg|Png Image (.png)|.png|Tiff Image (.tiff)|.tiff|Wmf Image (.wmf)|.wmf";
                 if (sf.ShowDialog() != DialogResult.Cancel)
@@ -265,7 +265,7 @@ namespace Paint_App
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Kayýt edilirken bir Hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Dosya kayýt edilirken bir Hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -342,7 +342,7 @@ namespace Paint_App
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Doldurma iþlemi yapýlýrken hata meydana geldi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
             }
 
